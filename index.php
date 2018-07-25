@@ -41,10 +41,10 @@ include_once("head.php");
                                         <script>
                     	var lin=new Array();
 						var now=0;
+						<?php include_once("mvim.php"); ?>
 						if(lin.length>1)
 						{
 							setInterval("ww()",3000);
-							now=1;
 						}
 						function ww()
 						{

@@ -4,6 +4,7 @@
 $list['title'] = "a_title.php";
 $list['ad'] = "a_marquee.php";
 $list['mvim'] = "a_mvim.php";
+$list['image'] = "a_image.php";
 $list['total'] = "a_total.php";
 $list['bottom'] = "a_bottom.php";
 $list['news'] = "a_news.php";

@@ -51,10 +51,12 @@
     <tr class="yel">
         	<td width="70%">動畫圖片</td><td width="10%">顯示</td><td width="10%">刪除</td><td width="10%"></td>
                     </tr>
-<?php 
+<?php
+
 $sql = "select * from a_mvim " ; 
 $c1 = mysqli_query($link,$sql) ;
-$c2 = mysqli_fetch_assoc($c1) ;
+$c2 = mysqli_fetch_assoc($c1);
+
 ?>
 <?php do{ ?>
     <tr class="yel">
