@@ -1,48 +1,3 @@
-<?php
-    if(!empty($_POST["upload"])){
-        $ee = explode(".",$_FILES['img']['name'])[1];
-        $time = strtotime("+6hour");
-        $imgname = $time.".".$ee;
-        $sql = "insert into a_image value (NULL,'$imgname','0')";
-        mysqli_query($link,$sql);
-        copy($_FILES["img"]["tmp_name"],"img/".$imgname);
-        echo "<script> document.location.href='admin.php?do=admin&redo=image' ; </script>";
-    }
-
-    if(!empty($_POST["my_no"][0])){
-        $sql = "update a_image set a_image_display ='0'";
-        mysqli_query($link,$sql);
-
-        for($i=0;$i<count($_POST["my_no"]);$i++){
-
-            if(!empty($_POST["delete"][$i])){
-                $sql = "select a_image_img from a_image where a_image_seq ='".$_POST["delete"][$i]."'" ;
-                $c1 = mysqli_query($link,$sql);
-                $c2 = mysqli_fetch_assoc($c1);
-                unlink("img/".$c2["a_image_img"]);
-                $sql = "delete from a_image where a_image_seq = '".$_POST["delete"][$i]."'";
-                mysqli_query($link,$sql);
-                echo "<script> document.location.href='admin.php?do=admin&redo=image' ; </script>";
-            }
-
-            if(!empty($_POST["myupdate"][$i])){
-                $sql = "update a_image set a_image_display ='1' where a_image_seq='".$_POST["myupdate"][$i]."';" ;
-                mysqli_query($link,$sql);
-                echo "<script> document.location.href='admin.php?do=admin&redo=image'; </script>";
-            }
-        }
-
-        
-    }
-
-    if(!empty($_POST["picdata"])){
-        
-        copy($_FILES["picupdate"]["tmp_name"],"img/".$_POST["picname"]);
-        echo "<script> document.location.href='admin.php?do=admin&redo=image' ; </script>";
-    }
-
-?> 
-
 
 							   <div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
                                     <p class="t cent botli">校園映像管理</p>
@@ -74,6 +29,52 @@ if($now_page == 1){
     $front_page = $now_page - 1 ;
     $next_page  = $now_page + 1 ;
 }
+?>
+<?php
+    if(!empty($_POST["upload"])){
+        $ee = explode(".",$_FILES['img']['name'])[1];
+        $time = strtotime("+6hour");
+        $imgname = $time.".".$ee;
+        $sql = "insert into a_image value (NULL,'$imgname','0')";
+        mysqli_query($link,$sql);
+        copy($_FILES["img"]["tmp_name"],"img/".$imgname);
+        echo "<script> document.location.href='admin.php?do=admin&redo=image' ; </script>";
+    }
+
+    if(!empty($_POST["my_no"][0])){
+        $sql = "update a_image set a_image_display ='0' limit $open_page,$page_add";
+        mysqli_query($link,$sql);
+
+        for($i=0;$i<count($_POST["my_no"]);$i++){
+
+            if(!empty($_POST["delete"][$i])){
+                $sql = "select a_image_img from a_image where a_image_seq ='".$_POST["delete"][$i]."'" ;
+                $c1 = mysqli_query($link,$sql);
+                $c2 = mysqli_fetch_assoc($c1);
+                unlink("img/".$c2["a_image_img"]);
+                $sql = "delete from a_image where a_image_seq = '".$_POST["delete"][$i]."'";
+                mysqli_query($link,$sql);
+                echo "<script> document.location.href='admin.php?do=admin&redo=image' ; </script>";
+            }
+
+            if(!empty($_POST["myupdate"][$i])){
+                $sql = "update a_image set a_image_display ='1' where a_image_seq='".$_POST["myupdate"][$i]."';" ;
+                mysqli_query($link,$sql);
+                echo "<script> document.location.href='admin.php?do=admin&redo=image'; </script>";
+            }
+        }
+
+        
+    }
+
+    if(!empty($_POST["picdata"])){
+        
+        copy($_FILES["picupdate"]["tmp_name"],"img/".$_POST["picname"]);
+        echo "<script> document.location.href='admin.php?do=admin&redo=image' ; </script>";
+    }
+
+
+
 
 $sql = "select * from a_image limit $open_page,$page_add ";
 $c1  = mysqli_query($link,$sql);
