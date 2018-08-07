@@ -104,8 +104,9 @@ include_once("head.php");
                 	<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo(&#39;login.php?do=admin&#39;)">管理登入</button>
                 	<div style="width:89%; height:480px;" class="dbor">
                     	<span class="t botli">校園映象區</span>
+						<div align='center'><img src="img/01E01.jpg" onclick="pp(1)"></div>
 						<?php include_once("image.php"); ?>
-						<div>0.0</div>
+						<div align='center'><img src="img/01E02.jpg" onclick="pp(2)"></div>
 						                        <script>
                         	var nowpage=0,num=<?=$x?>;
 							function pp(x)
@@ -129,7 +130,7 @@ include_once("head.php");
                             </div>
              	<div style="clear:both;"></div>
             	<div style="width:1024px; left:0px; position:relative; background:#FC3; margin-top:4px; height:123px; display:block;">
-                	<span class="t" style="line-height:123px;"></span>
+                	<span class="t" style="line-height:123px;"><?php include_once('bot.php'); ?></span>
                 </div>
     </div>
 

@@ -1,11 +1,11 @@
 							<div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
-                                  <p class="t cent botli">新增動態文字廣告</p>
+                                  <p class="t cent botli">新增最新消息資料</p>
         <form method="post" action="" enctype="multipart/form-data" >
 
 		<table width="80%" border="0" cellpadding="2">
 	<tr>
-		<td>動態文字廣告:</td>
-		<td><input type="text" name="txt"/></td>
+		<td>最新消息資料:</td>
+		<td><textarea name="txt" cols="45" rows="5" width="350"></textarea></td>
 	</tr>
 	</table>
 		
