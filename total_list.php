@@ -11,6 +11,7 @@ $list['news'] = "a_news.php";
 $list['admin'] = "a_admin.php";
 $list['total'] = "a_people.php";
 $list['bot'] = "a_bot.php";
+$list['menu'] = "a_menu.php";
 
 
 
