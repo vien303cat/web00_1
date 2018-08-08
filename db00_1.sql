@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2018-08-08 06:41:24
+-- 產生時間： 2018-08-08 17:32:46
 -- 伺服器版本: 10.1.31-MariaDB
--- PHP 版本： 7.0.29
+-- PHP 版本： 5.6.35
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -108,7 +108,29 @@ CREATE TABLE `a_member` (
 --
 
 INSERT INTO `a_member` (`a_member_seq`, `a_member_acc`, `a_member_pw`) VALUES
-(1, 'admin', '1234');
+(1, 'admin', '1234'),
+(3, '123', '123');
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `a_mid`
+--
+
+CREATE TABLE `a_mid` (
+  `a_mid_seq` int(10) UNSIGNED NOT NULL,
+  `a_mid_txt` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `a_mid_net` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `a_mid_display` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- 資料表的匯出資料 `a_mid`
+--
+
+INSERT INTO `a_mid` (`a_mid_seq`, `a_mid_txt`, `a_mid_net`, `a_mid_display`) VALUES
+(1, '登入管理', 'http://localhost/web00_1/login.php?do=admin', 1),
+(2, '網站首頁', 'http://localhost/web00_1/index.php', 1);
 
 -- --------------------------------------------------------
 
@@ -163,6 +185,19 @@ INSERT INTO `a_news` (`a_news_seq`, `a_news_txt`, `a_news_display`) VALUES
 -- --------------------------------------------------------
 
 --
+-- 資料表結構 `a_sup`
+--
+
+CREATE TABLE `a_sup` (
+  `a_sup_seq` int(10) UNSIGNED NOT NULL,
+  `a_sup_txt` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `a_sup_net` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `a_sup_midseq` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- 資料表結構 `a_title`
 --
 
@@ -182,7 +217,7 @@ INSERT INTO `a_title` (`a_title_seq`, `a_title_img`, `a_title_txt`, `a_title_dis
 (7, '1532368969.jpg', '卓越科技大學校園資訊系', 1),
 (8, '1532368974.jpg', '卓越科技大學校園資訊系', 0),
 (9, '1532371683.jpg', '卓越科技大學校園資訊系', 0),
-(11, '1532436724.jpg', '現在的我不是一個人了', 0);
+(11, '1532436724.jpg', '已經沒有什麼好害怕的了', 0);
 
 -- --------------------------------------------------------
 
@@ -200,7 +235,7 @@ CREATE TABLE `people` (
 --
 
 INSERT INTO `people` (`people_seq`, `people_num`) VALUES
-(1, 496);
+(1, 497);
 
 --
 -- 已匯出資料表的索引
@@ -231,6 +266,12 @@ ALTER TABLE `a_member`
   ADD PRIMARY KEY (`a_member_seq`);
 
 --
+-- 資料表索引 `a_mid`
+--
+ALTER TABLE `a_mid`
+  ADD PRIMARY KEY (`a_mid_seq`);
+
+--
 -- 資料表索引 `a_mvim`
 --
 ALTER TABLE `a_mvim`
@@ -241,6 +282,12 @@ ALTER TABLE `a_mvim`
 --
 ALTER TABLE `a_news`
   ADD PRIMARY KEY (`a_news_seq`);
+
+--
+-- 資料表索引 `a_sup`
+--
+ALTER TABLE `a_sup`
+  ADD PRIMARY KEY (`a_sup_seq`);
 
 --
 -- 資料表索引 `a_title`
@@ -280,7 +327,13 @@ ALTER TABLE `a_marquee`
 -- 使用資料表 AUTO_INCREMENT `a_member`
 --
 ALTER TABLE `a_member`
-  MODIFY `a_member_seq` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `a_member_seq` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- 使用資料表 AUTO_INCREMENT `a_mid`
+--
+ALTER TABLE `a_mid`
+  MODIFY `a_mid_seq` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- 使用資料表 AUTO_INCREMENT `a_mvim`
@@ -293,6 +346,12 @@ ALTER TABLE `a_mvim`
 --
 ALTER TABLE `a_news`
   MODIFY `a_news_seq` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- 使用資料表 AUTO_INCREMENT `a_sup`
+--
+ALTER TABLE `a_sup`
+  MODIFY `a_sup_seq` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- 使用資料表 AUTO_INCREMENT `a_title`
