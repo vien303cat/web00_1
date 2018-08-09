@@ -42,6 +42,7 @@ if(!empty($_POST["acc"])){
             		<div id="menuput" class="dbor">
                     <!--主選單放此-->
                     	                            <span class="t botli">主選單區</span>
+													<?php include_once("left.php"); ?>
                                                 </div>
                     <div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
                     	<span class="t">進站總人數 : 
@@ -80,15 +81,18 @@ if(!empty($_POST["acc"])){
                 	<!--右邊-->   
                 	<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo(&#39;login.php?do=admin&#39;)">管理登入</button>
                 	<div style="width:89%; height:480px;" class="dbor">
-                    	<span class="t botli">校園映象區</span>
+					<span class="t botli">校園映象區</span>
+						<div align='center'><img src="img/01E01.jpg" onclick="pp(1)"></div>
+						<?php include_once("image.php"); ?>
+						<div align='center'><img src="img/01E02.jpg" onclick="pp(2)"></div>
 						                        <script>
-                        	var nowpage=0,num=0;
+                        	var nowpage=0,num=<?=$x?>;
 							function pp(x)
 							{
 								var s,t;
 								if(x==1&&nowpage-1>=0)
 								{nowpage--;}
-								if(x==2&&(nowpage+1)*3<=num*1+3)
+								if(x==2&&(nowpage+1)<=num-3)
 								{nowpage++;}
 								$(".im").hide()
 								for(s=0;s<=2;s++)

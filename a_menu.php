@@ -5,6 +5,11 @@
         echo "<script> document.location.href='admin.php?do=admin&redo=menu' ; </script>";
     }
 
+    if(!empty($_POST["addseq"])){
+        $sql = "insert into a_sup value(NULL,'".$_POST["suptt"]."','".$_POST["nt"]."','".$_POST["addseq"]."')";
+        mysqli_query($link,$sql);
+    }
+
     if(!empty($_POST["word"][0])){
         $sql = "update a_mid set a_mid_display ='0'";
         mysqli_query($link,$sql);
@@ -25,9 +30,21 @@
             }
     
         }
+    }
 
+    if(!empty($_POST["suptxt"][0])){
 
-        
+        for($i=0;$i<count($_POST["sup_no"]);$i++){
+            $sql="update a_sup set a_sup_txt ='".$_POST["suptxt"][$i]."',a_sup_net='".$_POST["supnet"][$i]."' where a_sup_seq='".$_POST["sup_no"][$i]."';";
+            mysqli_query($link,$sql);
+
+            if(!empty($_POST["supdelete"][$i])){
+                $sql = "delete from a_sup where a_sup_seq = '".$_POST["supdelete"][$i]."'";
+                mysqli_query($link,$sql);
+                echo "<script> document.location.href='admin.php?do=admin&redo=menu' ; </script>";
+            }
+    
+        }
     }
 
 ?> 
@@ -57,7 +74,7 @@ $c2 = mysqli_fetch_assoc($c1) ;
     <td width="10%"><?=$row?> </td>
     <td width="10%"><input type="checkbox" value="<?=$c2['a_mid_seq']?>" name="myupdate[]" <?php if($c2['a_mid_display'] == 1 ){ ?> checked <?php } ?>  /> </td>
     <td width="10%"><input type="checkbox" value="<?=$c2['a_mid_seq']?>" name="delete[]" /> </td>
-    <td width="10%"> </td>
+    <td width="10%"><input type="button" value="編輯次選單" onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;a_menu_sup.php?do=ad&seq=<?=$c2["a_mid_seq"]?>&#39;)" > </td>
     </tr>
 <?php }while($c2 = mysqli_fetch_assoc($c1)); ?>
   </table>
