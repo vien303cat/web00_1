@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2018-08-08 17:32:46
+-- 產生時間： 2018-08-09 15:58:37
 -- 伺服器版本: 10.1.31-MariaDB
 -- PHP 版本： 5.6.35
 
@@ -195,6 +195,13 @@ CREATE TABLE `a_sup` (
   `a_sup_midseq` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- 資料表的匯出資料 `a_sup`
+--
+
+INSERT INTO `a_sup` (`a_sup_seq`, `a_sup_txt`, `a_sup_net`, `a_sup_midseq`) VALUES
+(3, '更多內容', 'http://localhost/web00_1/newsdata.php', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -235,7 +242,7 @@ CREATE TABLE `people` (
 --
 
 INSERT INTO `people` (`people_seq`, `people_num`) VALUES
-(1, 497);
+(1, 498);
 
 --
 -- 已匯出資料表的索引
@@ -333,7 +340,7 @@ ALTER TABLE `a_member`
 -- 使用資料表 AUTO_INCREMENT `a_mid`
 --
 ALTER TABLE `a_mid`
-  MODIFY `a_mid_seq` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `a_mid_seq` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- 使用資料表 AUTO_INCREMENT `a_mvim`
@@ -351,7 +358,7 @@ ALTER TABLE `a_news`
 -- 使用資料表 AUTO_INCREMENT `a_sup`
 --
 ALTER TABLE `a_sup`
-  MODIFY `a_sup_seq` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `a_sup_seq` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- 使用資料表 AUTO_INCREMENT `a_title`
